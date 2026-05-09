@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block Next.js internal routes
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://way2smiledental.in/sitemap.xml

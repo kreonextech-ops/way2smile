@@ -1,0 +1,44 @@
+.banner {
+  background: linear-gradient(90deg, var(--text) 0%, #2C3E6B 100%);
+  padding: 16px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+.item strong {
+  font-size: 14px;
+  font-weight: 800;
+  display: block;
+}
+
+.item span {
+  font-size: 13px;
+  opacity: 0.75;
+  display: block;
+}
+
+.divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 14px 20px;
+    gap: 16px;
+  }
+  .divider {
+    display: none;
+  }
+}

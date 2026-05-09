@@ -1,0 +1,168 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.topBar {
+  background: var(--blue-dark);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 8px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.topBarContent {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.topBarItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.topBarItem:hover {
+  color: var(--orange);
+}
+
+.hideMobile {
+  display: flex;
+}
+
+.nav {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0 56px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.doctorName {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.logoImg {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 0;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logoImg {
+  transform: scale(1.05);
+}
+
+
+
+.links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.link:hover {
+  color: var(--orange);
+}
+
+.cta {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.35);
+  text-decoration: none;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.45);
+}
+
+@media (max-width: 900px) {
+  .topBar {
+    padding: 6px 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+  .topBarContent {
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+  }
+  .topBarItem {
+    font-size: 9px;
+  }
+  .hideMobile {
+    display: none;
+  }
+  .nav {
+    padding: 12px 20px;
+  }
+  .links {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .doctorName {
+    display: none;
+  }
+}

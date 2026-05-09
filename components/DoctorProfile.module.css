@@ -1,0 +1,130 @@
+.section {
+  padding: 100px 56px;
+  background: var(--blue-pale);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.imageSide {
+  flex: 1;
+  position: relative;
+}
+
+.imageWrapper {
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+  transform: rotate(-2deg);
+  border: 12px solid #fff;
+}
+
+.imageWrapper img {
+  transform: rotate(2deg) scale(1.1);
+  transition: transform 0.5s ease;
+}
+
+.imageWrapper:hover img {
+  transform: rotate(2deg) scale(1.15);
+}
+
+.infoSide {
+  flex: 1.2;
+}
+
+.tag {
+  color: var(--orange);
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.degree {
+  font-size: 20px;
+  color: var(--blue-dark);
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.bio {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.itemLabel {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.itemValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.regBadge {
+  display: inline-block;
+  margin-top: 32px;
+  background: #fff;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--blue-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    gap: 60px;
+  }
+  .imageSide {
+    width: 80%;
+  }
+  .name {
+    font-size: 36px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

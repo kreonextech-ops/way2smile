@@ -58,14 +58,12 @@ export default function Navbar() {
           <button className={styles.link} onClick={() => scrollTo('contact')}>Contact</button>
         </div>
 
-        <a
-          href="https://wa.me/917679779255"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => scrollTo('appointment')}
           className={styles.cta}
         >
           Book Appointment
-        </a>
+        </button>
       </nav>
     </motion.header>
   )

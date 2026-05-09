@@ -148,7 +148,7 @@ export default function Hero() {
             </svg>
             Call Now
           </a>
-          <a href="#services" className="btn-outline">Book Appointment</a>
+          <a href="#appointment" className="btn-outline">Book Appointment</a>
         </motion.div>
 
         <div className={styles.stats}>

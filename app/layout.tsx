@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import WhatsAppWidget from '@/components/WhatsAppWidget'
 
 const SITE_URL = 'https://way2smiledental.in'
 const CLINIC_NAME = 'Way 2 Smile Multispeciality Dental Clinic'
@@ -209,7 +210,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <WhatsAppWidget />
+      </body>
     </html>
   )
 }

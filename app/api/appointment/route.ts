@@ -3,6 +3,14 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   try {
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+      console.error('Missing GMAIL_USER or GMAIL_PASS environment variables');
+      return NextResponse.json(
+        { error: 'Server configuration error. Missing email credentials.' },
+        { status: 500 }
+      );
+    }
+
     const { name, phone, service, date, time } = await request.json();
 
     const transporter = nodemailer.createTransport({

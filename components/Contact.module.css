@@ -76,6 +76,10 @@
   margin-bottom: 16px;
 }
 
+.infoCard:nth-child(3) {
+  grid-column: span 2;
+}
+
 .infoCard {
   display: flex;
   align-items: flex-start;
@@ -248,6 +252,14 @@
   .wrapper {
     grid-template-columns: 1fr;
     min-height: unset;
+  }
+
+  .infoCards {
+    grid-template-columns: 1fr;
+  }
+
+  .infoCard:nth-child(3) {
+    grid-column: span 1;
   }
 
   .left {

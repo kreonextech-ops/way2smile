@@ -6,12 +6,43 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function BookAppointment() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    service: '',
+    date: '',
+    time: ''
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    // Here you would typically send the data to a server
-    setTimeout(() => setSubmitted(false), 5000)
+    setLoading(true)
+
+    try {
+      const response = await fetch('/api/appointment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitted(true)
+        setFormData({ name: '', phone: '', service: '', date: '', time: '' })
+        setTimeout(() => setSubmitted(false), 5000)
+      } else {
+        alert('Failed to send request. Please try again.')
+      }
+    } catch (error) {
+      console.error(error)
+      alert('An error occurred. Please try again later.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   return (
@@ -53,7 +84,7 @@ export default function BookAppointment() {
               </div>
               <div>
                 <span className={styles.infoLabel}>Email Us</span>
-                <span className={styles.infoValue}>support@way2smile.com</span>
+                <span className={styles.infoValue}>way2smiledentalclinic07@gmail.com</span>
               </div>
             </div>
           </div>
@@ -91,34 +122,69 @@ export default function BookAppointment() {
                   <div className={styles.formGrid}>
                     <div className={styles.inputGroup}>
                       <label className={styles.label}>Full Name</label>
-                      <input type="text" placeholder="John Doe" className={styles.input} required />
+                      <input 
+                        type="text" 
+                        name="name"
+                        placeholder="John Doe" 
+                        className={styles.input} 
+                        value={formData.name}
+                        onChange={handleChange}
+                        required 
+                      />
                     </div>
                     <div className={styles.inputGroup}>
                       <label className={styles.label}>Phone Number</label>
-                      <input type="tel" placeholder="+91 00000 00000" className={styles.input} required />
+                      <input 
+                        type="tel" 
+                        name="phone"
+                        placeholder="+91 00000 00000" 
+                        className={styles.input} 
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required 
+                      />
                     </div>
                     <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
                       <label className={styles.label}>Select Service</label>
-                      <select className={styles.select} required>
+                      <select 
+                        name="service"
+                        className={styles.select} 
+                        value={formData.service}
+                        onChange={handleChange}
+                        required
+                      >
                         <option value="">Choose a service...</option>
-                        <option value="checkup">Routine Checkup</option>
-                        <option value="cleaning">Dental Cleaning</option>
-                        <option value="whitening">Teeth Whitening</option>
-                        <option value="rootcanal">Root Canal Treatment</option>
-                        <option value="extraction">Tooth Extraction</option>
-                        <option value="other">Other Consultation</option>
+                        <option value="Routine Checkup">Routine Checkup</option>
+                        <option value="Dental Cleaning">Dental Cleaning</option>
+                        <option value="Teeth Whitening">Teeth Whitening</option>
+                        <option value="Root Canal Treatment">Root Canal Treatment</option>
+                        <option value="Tooth Extraction">Tooth Extraction</option>
+                        <option value="Other Consultation">Other Consultation</option>
                       </select>
                     </div>
                     <div className={styles.inputGroup}>
                       <label className={styles.label}>Preferred Date</label>
-                      <input type="date" className={styles.input} required />
+                      <input 
+                        type="date" 
+                        name="date"
+                        className={styles.input} 
+                        value={formData.date}
+                        onChange={handleChange}
+                        required 
+                      />
                     </div>
                     <div className={styles.inputGroup}>
                       <label className={styles.label}>Preferred Time</label>
-                      <select className={styles.select} required>
+                      <select 
+                        name="time"
+                        className={styles.select} 
+                        value={formData.time}
+                        onChange={handleChange}
+                        required
+                      >
                         <option value="">Select Time Slot</option>
-                        <option value="morning">Morning (10AM - 2PM)</option>
-                        <option value="evening">Evening (4:30PM - 8:30PM)</option>
+                        <option value="Morning (10AM - 2PM)">Morning (10AM - 2PM)</option>
+                        <option value="Evening (4:30PM - 8:30PM)">Evening (4:30PM - 8:30PM)</option>
                       </select>
                     </div>
                   </div>
@@ -127,8 +193,9 @@ export default function BookAppointment() {
                     whileTap={{ scale: 0.98 }}
                     type="submit" 
                     className={styles.submitBtn}
+                    disabled={loading}
                   >
-                    Request Appointment
+                    {loading ? 'Sending...' : 'Request Appointment'}
                   </motion.button>
                 </motion.form>
               )}

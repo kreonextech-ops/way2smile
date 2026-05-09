@@ -63,6 +63,23 @@ export default function Contact() {
                 <p className={styles.cardVal}>Medical More, Siliguri, WB</p>
               </div>
             </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className={styles.infoCard}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <div>
+                <p className={styles.cardLabel}>Email Us</p>
+                <a href="mailto:way2smiledentalclinic07@gmail.com" className={styles.cardVal}>way2smiledentalclinic07@gmail.com</a>
+              </div>
+            </motion.div>
           </div>
 
           {/* Hours */}

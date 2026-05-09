@@ -25,14 +25,16 @@
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
   transform: rotate(-2deg);
   border: 12px solid #fff;
+  aspect-ratio: 5/6; /* Maintain height-to-width ratio */
 }
 
-.imageWrapper img {
+.doctorImg {
+  object-fit: cover;
   transform: rotate(2deg) scale(1.1);
   transition: transform 0.5s ease;
 }
 
-.imageWrapper:hover img {
+.imageWrapper:hover .doctorImg {
   transform: rotate(2deg) scale(1.15);
 }
 
@@ -113,12 +115,16 @@
 }
 
 @media (max-width: 1000px) {
+  .section {
+    padding: 80px 24px; /* Reduce padding on mobile */
+  }
   .container {
     flex-direction: column;
-    gap: 60px;
+    gap: 40px;
   }
   .imageSide {
-    width: 80%;
+    width: 100%; /* Take full width on mobile */
+    max-width: 400px; /* But don't get too giant */
   }
   .name {
     font-size: 36px;

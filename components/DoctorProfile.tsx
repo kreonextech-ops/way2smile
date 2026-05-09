@@ -19,9 +19,10 @@ export default function DoctorProfile() {
             <Image
               src="/doctor.jpeg"
               alt="Dr. Aashish Kumar Jha"
-              width={500}
-              height={600}
-              style={{ objectFit: 'cover' }}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 500px"
+              className={styles.doctorImg}
             />
           </div>
         </motion.div>

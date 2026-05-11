@@ -10,7 +10,6 @@ const RAW_IMAGES = [
   '/gallery/BEFORE.png',
   '/gallery/IMG_20260508_154837.jpg.jpeg',
   '/gallery/IMG_20260508_16532.jpg.jpeg',
-  '/gallery/correct_his_facce_posture_2K_202605052001.jpeg',
   '/gallery/enhance_this_image_for_website_202605041945 (1).jpeg',
   '/gallery/enhance_this_image_for_website_202605041945.jpeg',
   '/gallery/hero.jpeg',
@@ -24,9 +23,9 @@ const RAW_IMAGES = [
 const SIZES = [
   'wide', 'small', 'small',   // Row 1
   'small', 'wide', 'small',   // Row 2
-  'large', 'small', 'small',  // Row 3-4 (L + 2S)
-  'small', 'small',           // Row 3-4 (continued)
-  'wide', 'wide'              // Row 5
+  'large', 'wide',            // Rows 3-4 (L is 2x2, W is 2x1 on Row 3)
+  'wide',                     // Row 4 (W is 2x1 on Row 4)
+  'wide', 'small', 'small'    // Row 5
 ]
 
 const containerVariants = {

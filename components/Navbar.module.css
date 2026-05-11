@@ -34,6 +34,7 @@
   text-decoration: none;
   color: inherit;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .topBarItem:hover {
@@ -148,7 +149,8 @@
     width: 100%;
   }
   .topBarItem {
-    font-size: 9px;
+    font-size: 8px;
+    gap: 4px;
   }
   .hideMobile {
     display: none;

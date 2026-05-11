@@ -7,24 +7,27 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const RAW_IMAGES = [
   '/gallery/20260429_150639.jpg.jpeg',
-  '/gallery/IMG_20260429_145011.jpg.jpeg',
+  '/gallery/BEFORE.png',
+  '/gallery/IMG_20260508_154837.jpg.jpeg',
+  '/gallery/IMG_20260508_16532.jpg.jpeg',
   '/gallery/correct_his_facce_posture_2K_202605052001.jpeg',
   '/gallery/enhance_this_image_for_website_202605041945 (1).jpeg',
   '/gallery/enhance_this_image_for_website_202605041945.jpeg',
   '/gallery/hero.jpeg',
+  '/gallery/new-beginning-1.jpeg',
+  '/gallery/new-beginning-2.jpeg',
+  '/gallery/put_mask_on_his_face_202605111804.jpeg',
   '/gallery/remove_the_upper_floor,_remove_202605051956.jpeg',
+  '/gallery/whatsapp-image-11.jpeg'
 ]
 
-function shuffleArray(arr: string[]) {
-  const a = [...arr]
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
-
-const SIZES = ['large', 'wide', 'wide', 'small', 'small', 'small', 'small']
+const SIZES = [
+  'wide', 'small', 'small',   // Row 1
+  'small', 'wide', 'small',   // Row 2
+  'large', 'small', 'small',  // Row 3-4 (L + 2S)
+  'small', 'small',           // Row 3-4 (continued)
+  'wide', 'wide'              // Row 5
+]
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -47,12 +50,7 @@ const itemVariants = {
 } as const
 
 export default function Gallery() {
-  const [images, setImages] = useState(RAW_IMAGES)
   const [lightbox, setLightbox] = useState<string | null>(null)
-
-  useEffect(() => {
-    setImages(shuffleArray(RAW_IMAGES))
-  }, [])
 
   // Close lightbox on Escape key
   useEffect(() => {
@@ -65,7 +63,7 @@ export default function Gallery() {
 
   return (
     <>
-      <section className={styles.section}>
+      <section className={styles.section} id="gallery">
         <div className={styles.container}>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -86,8 +84,8 @@ export default function Gallery() {
             viewport={{ once: true }}
             className={styles.grid}
           >
-            {images.map((src, index) => {
-              const sizeClass = styles[SIZES[index]] ?? styles.small
+            {RAW_IMAGES.map((src, index) => {
+              const sizeClass = styles[SIZES[index]] || styles.small
               return (
                 <motion.div
                   key={src}

@@ -6,9 +6,9 @@ import styles from './AboutClinic.module.css'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const CLINIC_IMAGES = [
-  '/clinc/IMG_20260429_144921.jpg.jpeg',
-  '/clinc/20260429_150519-1.jpg.jpeg',
-  '/clinc/remove_the_upper_floor,_remove_202605051956.jpeg'
+  '/clinic/clinic-1.jpeg',
+  '/clinic/put_mask_on_his_face_202605111804.jpeg',
+  '/clinic/A new beginning ❤️❤️(JPG)_1.jpg.jpeg'
 ]
 
 export default function AboutClinic() {
